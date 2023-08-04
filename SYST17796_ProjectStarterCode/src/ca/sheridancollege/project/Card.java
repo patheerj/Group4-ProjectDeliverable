@@ -5,13 +5,16 @@
  */
 package ca.sheridancollege.project;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * A class to be used as the base Card class for the project. Must be general enough to be instantiated for any Card
  * game. Students wishing to add to the code should remember to add themselves as a modifier.
  *
  * @author dancye
  */
-public abstract class Card {
+public class Card {
     //default modifier for child classes
 
     /**
@@ -19,7 +22,18 @@ public abstract class Card {
      *
      * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
      */
+    ArrayList<String> value=new ArrayList<String>
+    (Arrays.asList("ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"));
+        
+    ArrayList<String> suit=new ArrayList<String>
+    (Arrays.asList("DIAMOND","SPADE","HEART","CLOVE"));    
+    
+    
+    
     @Override
-    public abstract String toString();
+    public String toString(){
+       
+      return (value+" of "+suit);
+    }
 
 }
