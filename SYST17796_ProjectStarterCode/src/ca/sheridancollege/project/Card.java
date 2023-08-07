@@ -22,14 +22,25 @@ public class Card {
      *
      * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
      */
-    ArrayList<String> value=new ArrayList<String>
-    (Arrays.asList("ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"));
-        
-    ArrayList<String> suit=new ArrayList<String>
-    (Arrays.asList("DIAMOND","SPADE","HEART","CLOVE"));    
-    
-    
-    
+ 
+    public enum Value{ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING};
+    public enum Suit{DIAMOND,SPADE,HEART,CLOVE};
+    private static Value value;
+    private static Suit suit;
+
+    public Card(Suit s, Value v) {
+        value=v;
+        suit=s;
+    }
+
+    public static Value getValue() {
+        return value;
+    }
+
+    public static Suit getSuit() {
+        return suit;
+    }
+   
     @Override
     public String toString(){
        
