@@ -6,6 +6,8 @@
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * The class that models your game. You should create a more specific child of this class and instantiate the methods
@@ -14,15 +16,15 @@ import java.util.ArrayList;
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  */
-public abstract class Game {
+public class Game {
 
-    private final String name;//the title of the game
-    private ArrayList<Player> players;// the players of the game
-
-    public Game(String name) {
-        this.name = name;
-        players = new ArrayList();
+    private final String name="War Game";//the title of the game   
+    public Game() {
     }
+    
+
+    
+    List<Card> gameDeck=new ArrayList<Card>(30);
 
     /**
      * @return the name
@@ -30,29 +32,23 @@ public abstract class Game {
     public String getName() {
         return name;
     }
-
+    
+    
     /**
-     * @return the players of this game
+     * Play the game.This might be one method or many method calls depending on your game.
+     * @param list
      */
-    public ArrayList<Player> getPlayers() {
-        return players;
+     public void play(List<Card> list) {
+        System.out.println(list.get(list.size()-1)+"is being Played");
+        list.remove(list.get(list.size()-1));
+                
+        
+        
     }
-
-    /**
-     * @param players the players of this game
-     */
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
-    }
-
-    /**
-     * Play the game. This might be one method or many method calls depending on your game.
-     */
-    public abstract void play();
 
     /**
      * When the game is over, use this method to declare and display a winning player.
      */
-    public abstract void declareWinner();
+    //public abstract void declareWinner();
 
 }//end class

@@ -5,8 +5,7 @@
  */
 package ca.sheridancollege.project;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 /**
  * A class to be used as the base Card class for the project. Must be general enough to be instantiated for any Card
@@ -20,31 +19,63 @@ public class Card {
     /**
      * Students should implement this method for their specific children classes
      *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
+     * 
      */
  
-    public enum Value{ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING};
+    public enum Value{TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE};
     public enum Suit{DIAMOND,SPADE,HEART,CLOVE};
-    private static Value value;
-    private static Suit suit;
+    private Value value;
+    private Suit suit;
 
     public Card(Suit s, Value v) {
         value=v;
         suit=s;
     }
 
-    public static Value getValue() {
+    public Value getValue() {
         return value;
     }
 
-    public static Suit getSuit() {
+    public Suit getSuit() {
         return suit;
     }
    
     @Override
     public String toString(){
        
-      return (value+" of "+suit);
+      return (":::"+value+" of "+suit+":::");
     }
-
+    
+    public boolean equals(Card card){
+        return(this.suit.equals(card.suit)&&this.value.equals(card.value));
+    }
+    
+    //used to declare war
+    public boolean equalValue(Card card){
+        return(this.value.equals(card.value));
+    }
+    
+    public boolean greaterThan(Card c){
+        Value v=c.value;
+        Value vv=this.value;
+        for(int i=0;i<13;i++){
+            if(v==Value.values()[i]){
+                
+                for(int y=i+1;y<13;y++){
+                    if(vv==Value.values()[y])
+                        return true;
+                    
+                    
+                        
+                    
+                }
+                
+            }
+            
+        }  
+        return false;
+        
+        
+        
+    }
 }
