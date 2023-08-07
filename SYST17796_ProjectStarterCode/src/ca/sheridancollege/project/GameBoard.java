@@ -103,7 +103,13 @@ public class GameBoard {
         //int myIndexTwo=p2.PlayerDeck.size()-1;
         do{
             System.out.println("-----"+ p1.getName()+" turn -----");
-            System.out.println("cards left: "+p1.PlayerDeck.size());
+             int p1Cards=p1.PlayerDeck.size();
+            System.out.println("cards left: "+p1Cards);
+            
+            if (p1Cards==0)
+            {   DashBoard dashboard = new DashBoard( p2.getName(),p1.getName());
+              break;
+            }
             String input;
             Card cardPlayedOne=p1.PlayerDeck.get(p1.PlayerDeck.size()-1);
             
@@ -125,7 +131,15 @@ public class GameBoard {
             
             //////////////////////////////////////////////////////
             System.out.println("-----"+ p2.getName()+" turn -----");
-            System.out.println("cards left: "+p2.PlayerDeck.size());
+            int p2Cards =p2.PlayerDeck.size();
+            System.out.println("cards left: "+p2Cards );
+            
+             if (p2Cards==0)
+            {  
+                DashBoard dashboard1 = new DashBoard( p1.getName(),p2.getName());
+              break;
+            }
+             
             String inputX;
             Card cardPlayedTwo = p2.PlayerDeck.get(p2.PlayerDeck.size()-1);
             
@@ -137,6 +151,7 @@ public class GameBoard {
                     g.play(p2.PlayerDeck);
            
             }
+                
             }else{
             do{
                 System.out.print("Play :");

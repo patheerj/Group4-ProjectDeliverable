@@ -62,8 +62,8 @@ public class GroupOfCards {
     }
 
     
-    public static void shuffle(LinkedList<Card> heer) {
-        Collections.shuffle(heer);
+    public static void shuffle(LinkedList<Card> deck) {
+        Collections.shuffle(deck);
     }
     
     public static LinkedList<Card> playing(LinkedList<Card> list){
