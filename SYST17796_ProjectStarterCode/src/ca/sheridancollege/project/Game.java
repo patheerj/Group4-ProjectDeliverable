@@ -6,7 +6,6 @@
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,6 +14,7 @@ import java.util.List;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @author heer
  */
 public class Game {
 
@@ -46,9 +46,6 @@ public class Game {
         
     }
 
-    /**
-     * When the game is over, use this method to declare and display a winning player.
-     */
-    //public abstract void declareWinner();
+    
 
 }//end class

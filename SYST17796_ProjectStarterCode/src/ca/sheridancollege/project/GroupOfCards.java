@@ -16,6 +16,7 @@ import java.util.List;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @author Heer
  */
 public class GroupOfCards {
     //The group of cards, stored in an ArrayList
@@ -52,16 +53,12 @@ public class GroupOfCards {
                         Card c=new Card(s,v);
                         mydeck.add(c);
                         }
-                        
                     }
-                
         GroupOfCards.shuffle(mydeck);
-        
         return mydeck;
+}
 
-    }
-
-    
+    //this method is specific for GroupOfCards Object
     public static void shuffle(LinkedList<Card> heer) {
         Collections.shuffle(heer);
     }

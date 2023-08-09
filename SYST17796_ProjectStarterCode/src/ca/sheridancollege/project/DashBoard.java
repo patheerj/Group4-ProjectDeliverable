@@ -6,7 +6,7 @@ package ca.sheridancollege.project;
 
 /**
  *
- * @author KK
+ * @author Harry
  */
 public class DashBoard {
     
@@ -17,13 +17,15 @@ public class DashBoard {
     {
         this.winner=winner;
         this.loser=loser;
-        
+        printScoreboard();       
+             
+    }
+    //applied open close principle-can add more without changing the main code
+    private void printScoreboard(){
         System.out.println("----------End of War Game---------");
-        System.out.println("Congractulations " + winner + " you Won..");
+        System.out.println("Congratulations " + winner + " you Won..");
         System.out.println("Bad luck " + loser + " you lose..");
-        
-        
-        
+        System.out.println("-----------------------------------");
     }
     
      

@@ -12,6 +12,7 @@ package ca.sheridancollege.project;
  * game. Students wishing to add to the code should remember to add themselves as a modifier.
  *
  * @author dancye
+ * @author heer
  */
 public class Card {
     //default modifier for child classes
@@ -63,19 +64,10 @@ public class Card {
                 
                 for(int y=i+1;y<13;y++){
                     if(vv==Value.values()[y])
-                        return true;
-                    
-                    
-                        
-                    
+                        return true;        
                 }
-                
             }
-            
         }  
         return false;
-        
-        
-        
     }
 }

@@ -6,101 +6,33 @@
 package ca.sheridancollege.project;
 
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
  *
- * @author Harry
+ * @author Heer
  */
 public class GameBoard {
     public static void main(String[] args){
+        
+        
     
     GroupOfCards goc=new GroupOfCards();
     
     Game g=new Game();
     Player p1=new Player(goc.onePlayer);
     Player p2=new Player(goc.twoPlayer);
-    Scanner scan=new Scanner(System.in);
-    String type;
-    do{
-    System.out.println("Enter M for Multiplayer Game and C for Game Against Computer: ");
-    type=scan.nextLine();
-    }while(!(type.equals("M"))&&!(type.equals("C")));
-    
-    String ans;
-    do{
-    System.out.print("Do you want to select name for Players: Y or N");
-    ans=scan.nextLine();
-    }while(!(ans.equals("Y"))&&!(ans.equals("N")));
-    
-    String playerOne;
-    String playerTwo;
-    switch(ans){
-    
-        case "Y":{
-                switch(type){
-                    case "M":{
-                        System.out.println("Enter the first player name: ");
-                        playerOne=scan.nextLine();
-                        p1.setName(playerOne);
-                        System.out.println("Enter the Second player name: ");
-                        playerTwo=scan.nextLine();
-                        p2.setName(playerTwo);
-                    };
-                        break;
-                    case "C":{
-                        System.out.println("Enter the first player name: ");
-                        playerOne=scan.nextLine();
-                        p1.setName(playerOne);
-                        p2.setName("Computer");
-                    };
-                        break;
-                    default:;
-                }
-        };
-            break;
-        case "N":{
-                switch(type){
-                    case "M":{
-                        p1.setName("Player1");
-                        p2.setName("Player2");
-                    };
-                        break;
-                    case "C":{
-                        p1.setName("Player1");
-                        p2.setName("Computer");
-                    };
-                        break;
-                    default:;
-                }
-        
-        };
-            break;
-        default:;
-    
-    }
-    
+    String type = askingGame();
+    String ans = askingName(type, p1,p2);
     GameBoard.playing(g,p1,p2);
-
-    
-    
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////
     public static  void playing(Game g, Player p1, Player p2){
         System.out.println("<<<<Deck has been dealed>>>>");
-        System.out.println("Press P to draw a card");
-        
-        //List<Card> gameDeck=new LinkedList<Card>();
-        Scanner scan=new Scanner(System.in);
-        
-        //ListIterator<Card> it= g.PlayerOneDeck.listIterator();
-        //ListIterator<Card> has= g.PlayerTwoDeck.listIterator();
-        
-        //int myIndexOne=p1.PlayerDeck.size()-1;
-        //int myIndexTwo=p2.PlayerDeck.size()-1;
+        System.out.println("Press P to draw a card");      
+        Scanner scan=new Scanner(System.in);       
         do{
             System.out.println("-----"+ p1.getName()+" turn -----");
              int p1Cards=p1.PlayerDeck.size();
@@ -128,8 +60,6 @@ public class GameBoard {
                     g.play(p1.PlayerDeck);
                    
                 }
-            
-            //////////////////////////////////////////////////////
             System.out.println("-----"+ p2.getName()+" turn -----");
             int p2Cards =p2.PlayerDeck.size();
             System.out.println("cards left: "+p2Cards );
@@ -168,99 +98,32 @@ public class GameBoard {
             }
                 
             }
-            
-            ////////////////////////////////////////////////////////////////
+
             
             if(cardPlayedOne.equalValue(cardPlayedTwo)){
+                //war code for playing
                 System.out.println("War is declared");
                 System.out.print("-----"+p1.getName()+"-----");
-                
-                
-                    if(!p1.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p1.PlayerDeck.get(p1.PlayerDeck.size()-1));
-                    g.play(p1.PlayerDeck);
-                    
-                    }
-                    
-                    if(!p1.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p1.PlayerDeck.get(p1.PlayerDeck.size()-1));
-                    g.play(p1.PlayerDeck);
-                    
-                    }
-                    
-                    if(!p1.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p1.PlayerDeck.get(p1.PlayerDeck.size()-1));
-                    g.play(p1.PlayerDeck);
-                    
-                    }
-                    
-                    if(!p1.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p1.PlayerDeck.get(p1.PlayerDeck.size()-1));
-                    g.play(p1.PlayerDeck);
-                    
-                    }
+                    play(p1,g);
+                    play(p1,g);
+                    play(p1,g);
+                    play(p1,g);
                     
                     Card cardlastone =g.gameDeck.get(g.gameDeck.size()-1);
                 System.out.print("-----"+p2.getName()+"-----");
                 
-                if(!p2.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p2.PlayerDeck.get(p2.PlayerDeck.size()-1));
-                    g.play(p2.PlayerDeck);
-                    
-                    }
+                    play(p2,g);
+                    play(p2,g);
+                    play(p2,g);
+                    play(p2,g);
                 
-                if(!p2.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p2.PlayerDeck.get(p2.PlayerDeck.size()-1));
-                    g.play(p2.PlayerDeck);
-                    
-                    }
+                    Card cardlasttwo =g.gameDeck.get(g.gameDeck.size()-1); 
+                  
+                  //game descision statements
                 
-                if(!p2.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p2.PlayerDeck.get(p2.PlayerDeck.size()-1));
-                    g.play(p2.PlayerDeck);
-                    
-                    }
+                  descision(cardlastone, cardlasttwo, g,p1,p2);
                 
-                if(!p2.PlayerDeck.isEmpty()){
-    
-                    g.gameDeck.add(p2.PlayerDeck.get(p2.PlayerDeck.size()-1));
-                    g.play(p2.PlayerDeck);
-                    
-                    }
-                
-                Card cardlasttwo =g.gameDeck.get(g.gameDeck.size()-1);
-                    
-                  /////////////////////////////////////////////////////////////  
-                if((cardlastone).greaterThan(cardlasttwo)){
-                    
-                    for(Card c:g.gameDeck){
-                    p1.PlayerDeck.add(c);
-                    
-                }
-                    System.out.println(p1.getName()+" Wins");
-                    Collections.shuffle(p1.PlayerDeck);
-                    g.gameDeck.clear();
-                }else{
-                
-                    for(Card c:g.gameDeck){
-                    p2.PlayerDeck.add(c);
-                    }
-                    System.out.println(p2.getName()+" Wins");
-                    Collections.shuffle(p2.PlayerDeck);
-                    g.gameDeck.clear();
-                
-                }
-                
-                
-            
-            //statements to play war;
+ 
             
             }else if(cardPlayedOne.greaterThan(cardPlayedTwo)){
                 for(Card c:g.gameDeck){
@@ -282,6 +145,110 @@ public class GameBoard {
             }while(!p1.PlayerDeck.isEmpty()||!p2.PlayerDeck.isEmpty());
         
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static String askingGame(){
+        Scanner scan=new Scanner(System.in);
+        String type;
+        do{
+        System.out.println("Enter M for Multiplayer Game and C for Game Against Computer: ");
+        type=scan.nextLine();
+        }while(!(type.equals("M"))&&!(type.equals("C")));
+        return type;
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static String askingName(String type, Player p1,Player p2){
+        Scanner scan=new Scanner(System.in);
+        String ans;
+        do{
+        System.out.print("Do you want to select name for Players: Y or N");
+        ans=scan.nextLine();
+        }while(!(ans.equals("Y"))&&!(ans.equals("N")));
+
+        String playerOne;
+        String playerTwo;
+                
+        switch(ans){
+
+            case "Y":{
+                    switch(type){
+                        case "M":{
+                            System.out.println("Enter the first player name: ");
+                            playerOne=scan.nextLine();
+                            p1.setName(playerOne);
+                            System.out.println("Enter the Second player name: ");
+                            playerTwo=scan.nextLine();
+                            p2.setName(playerTwo);
+                        };
+                            break;
+                        case "C":{
+                            System.out.println("Enter the first player name: ");
+                            playerOne=scan.nextLine();
+                            p1.setName(playerOne);
+                            p2.setName("Computer");
+                        };
+                            break;
+                        default:;
+                    }
+            };
+                break;
+            case "N":{
+                    switch(type){
+                        case "M":{
+                            p1.setName("Player1");
+                            p2.setName("Player2");
+                        };
+                            break;
+                        case "C":{
+                            p1.setName("Player1");
+                            p2.setName("Computer");
+                        };
+                            break;
+                        default:;
+                    }
+
+            };
+                break;
+            default:;
+
+    }
+        return ans;
+    
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    public static void play(Player p, Game g){
+         if(!p.PlayerDeck.isEmpty()){
+    
+                    g.gameDeck.add(p.PlayerDeck.get(p.PlayerDeck.size()-1));
+                    g.play(p.PlayerDeck);
+                    
+                    }
+        
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static void descision(Card cardlastone, Card cardlasttwo, Game g, Player p1, Player p2){
+        if((cardlastone).greaterThan(cardlasttwo)){
+                    
+                    for(Card c:g.gameDeck){
+                    p1.PlayerDeck.add(c);
+                    
+                    }
+                    System.out.println(p1.getName()+" Wins");
+                    Collections.shuffle(p1.PlayerDeck);
+                    g.gameDeck.clear();
+                }else{
+                
+                    for(Card c:g.gameDeck){
+                    p2.PlayerDeck.add(c);
+                    }
+                    System.out.println(p2.getName()+" Wins");
+                    Collections.shuffle(p2.PlayerDeck);
+                    g.gameDeck.clear();
+                
+                }
+    
+    }
+    
+   
 
 
 }

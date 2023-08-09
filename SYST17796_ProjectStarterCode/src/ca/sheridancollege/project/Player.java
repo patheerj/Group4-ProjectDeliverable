@@ -6,7 +6,6 @@
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,6 +13,7 @@ import java.util.List;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @author heer
  */
 public class Player {
 
@@ -53,10 +53,6 @@ public class Player {
         this.name = name;
     }
 
-    /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
-     */
-    //public abstract void play();
+    
 
 }
