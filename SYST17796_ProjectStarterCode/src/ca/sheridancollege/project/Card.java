@@ -24,7 +24,7 @@ public class Card {
      */
  
     public enum Value{TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE};
-    public enum Suit{DIAMOND,SPADE,HEART,CLOVE};
+    public enum Suit{DIAMOND,SPADE,HEART,CLUB};
     private Value value;
     private Suit suit;
 
