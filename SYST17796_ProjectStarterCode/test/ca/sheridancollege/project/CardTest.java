@@ -17,78 +17,106 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CardTest {
     
-    public CardTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+      public CardTest() {
     }
 
-    
+    @BeforeAll
+    public static void setUpClass() {
+        System.out.println("Before class--------------------");
+    }
+
+    @AfterAll
+    public static void tearDownClass() {
+        System.out.println("After class--------------------");
+    }
+
+    @BeforeEach
+    public void setUp() {
+        System.out.println("Before test--------------------");
+
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.out.println("After test--------------------");
+    }
+
+
     /**
      * Test of equalValue method, of class Card.
      */
     @Test
-    public void testEqualValueGood() {
-        System.out.println("equalValue");
-        Card card = new Card(Card.Suit.CLUB,Card.Value.ACE);
-        Card instance = new Card(Card.Suit.CLUB,Card.Value.ACE);
-        boolean expResult = true;
-        boolean result = instance.equalValue(card);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-    
-    @Test
-    public void testEqualValueBoundary() {
-        System.out.println("equalValue");
-        Card card = new Card(Card.Suit.CLUB,Card.Value.ACE);
-        Card instance = new Card(Card.Suit.SPADE,Card.Value.ACE);
-        boolean expResult = true;
-        boolean result = instance.equalValue(card);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-    
-    @Test
     public void testEqualValueBad() {
-        System.out.println("equalValue");
-        Card card = new Card(Card.Suit.CLUB,Card.Value.ACE);
-        Card instance = new Card(Card.Suit.SPADE,Card.Value.TWO);
+        System.out.println("Bad Case");
+        Card card = new Card(Card.Suit.DIAMOND,Card.Value.TWO);
+        Card instance = new Card(Card.Suit.HEART,Card.Value.ACE);
         boolean expResult = false;
         boolean result = instance.equalValue(card);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        //("The test case is a prototype.");
+        //fail("The test case is a prototype.");
+    }
+
+    @Test
+    public void testEqualValueBorder() {
+        System.out.println("Border Case");
+        Card card = new Card(Card.Suit.DIAMOND,Card.Value.ACE);
+        Card instance = new Card(Card.Suit.HEART,Card.Value.ACE);
+        boolean expResult = true;
+        boolean result = instance.equalValue(card);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    @Test
+    public void testEqualValueGood() {
+        System.out.println(" Good case ");
+        Card card = new Card(Card.Suit.HEART,Card.Value.ACE);
+        Card instance = new Card(Card.Suit.HEART,Card.Value.ACE);
+        boolean expResult = true;
+        boolean result = instance.equalValue(card);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of greaterThan method, of class Card.
      */
-   // @Test
-//    public void testGreaterThan() {
-//        System.out.println("greaterThan");
-//        Card c = null;
-//        Card instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.greaterThan(c);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGreaterThanBad() {
+        System.out.println("Bad Case");
+        Card card = new Card(Card.Suit.DIAMOND,Card.Value.ACE);
+        Card instance = new Card(Card.Suit.HEART,Card.Value.TWO);
+        boolean expResult = false;
+        boolean result = instance.greaterThan(card);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        // fail("The test case is a prototype.");
+    }
+    @Test
+    public void testGreaterThanBorder() {
+        System.out.println("Border Case");
+        Card card = new Card(Card.Suit.DIAMOND,Card.Value.TWO);
+        Card instance = new Card(Card.Suit.HEART,Card.Value.TWO);
+        boolean expResult = false;
+        boolean result = instance.greaterThan(card);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        // fail("The test case is a prototype.");
+    }
+    @Test
+    public void testGreaterThanGood() {
+        System.out.println(" Good case ");
+        Card card = new Card(Card.Suit.DIAMOND,Card.Value.TWO);
+        Card instance = new Card(Card.Suit.HEART,Card.Value.ACE);
+        boolean expResult = true;
+        boolean result = instance.greaterThan(card);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        // fail("The test case is a prototype.");
+    }
+
     
 }
